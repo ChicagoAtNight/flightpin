@@ -1,8 +1,24 @@
-application: new-project-template
+application: skypin
 version: 1
 runtime: python
 api_version: 1
 
 handlers:
 - url: .*
-  script: main.py
+  script: skypin.py
+
+# begin static handlers
+## Images for static pages
+- url: www/images
+  static_dir: images
+
+## CSS for static pages
+- url: www/stylesheets
+  static_dir: stylesheets
+
+## Image exentensions
+- url: /(.*\.(gif|png|jpg))
+  static_files: static/\1
+  upload: static/(.*\(gif|png|jpg))
+
+
