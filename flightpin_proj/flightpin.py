@@ -45,19 +45,21 @@ class MainPage(webapp.RequestHandler):
     self.response.out.write('''
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />''')
-    self.response.out.write('<html xmlns="http://www.w3.org/1999/xhtml">')
+    self.response.out.write('<html xmlns="http://www.w3.org/1999/xhtml">\n')
     self.response.out.write('<head>')
-    self.response.out.write('<title>FlightPin: Pin your destination, find your flight fast</title>')
-    self.response.out.write('<script type="text/javascript" src="www/scripts/jquery-1.3.2.min.js"></script>')
-    self.response.out.write('<script type="text/javascript" src="www/scripts/cal.js"></script>')
+    self.response.out.write('<title>FlightPin: Pin your destination, find your flight fast</title>\n')
+    self.response.out.write('<link rel="shortcut icon" href="www/images/favico.ico">\n')
+    self.response.out.write('<script type="text/javascript" src="www/scripts/jquery-1.3.2.min.js"></script>\n')
+    self.response.out.write('<script type="text/javascript" src="www/scripts/cal.js"></script>\n')
     self.response.out.write('''<script type="text/javascript">
-            jQuery(document).ready(function () {
-	    $('input.one').simpleDatepicker();
+            jQuery(document).ready(function ()
+            {
+	      $('input.one').simpleDatepicker();
             });
-          </script>''')
-    self.response.out.write('<link href="www/stylesheets/calendar.css" rel="stylesheet" type="text/css" />')
-    self.response.out.write('<link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">')
-    self.response.out.write('</head><body>')
+          </script>\n''')
+    self.response.out.write('<link href="www/stylesheets/calendar.css" rel="stylesheet" type="text/css" />\n')
+    self.response.out.write('<link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">\n')
+    self.response.out.write('</head><body>\n')
 
     #greetings = db.GqlQuery("SELECT * "
      #                       "FROM Flight "

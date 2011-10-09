@@ -6,7 +6,7 @@ api_version: 1
 handlers:
 # begin static handlers
 ## Images for static pages
-- url: /images
+- url: /www/images/
   static_dir: www/images
 
 ## CSS for static pages
