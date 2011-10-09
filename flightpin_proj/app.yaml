@@ -6,15 +6,15 @@ api_version: 1
 handlers:
 # begin static handlers
 ## Images for static pages
-- url: /www/images/
+- url: /www/images
   static_dir: www/images
 
 ## CSS for static pages
-- url: /stylesheets
+- url: /www/stylesheets
   static_dir: www/stylesheets
 
 ## scripts for static pages
-- url: /scripts
+- url: /www/scripts
   static_dir: www/scripts
 
 - url: .*

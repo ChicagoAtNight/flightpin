@@ -48,15 +48,15 @@ class MainPage(webapp.RequestHandler):
     self.response.out.write('<html xmlns="http://www.w3.org/1999/xhtml">\n')
     self.response.out.write('<head>')
     self.response.out.write('<title>FlightPin: Pin your destination, find your flight fast</title>\n')
-    self.response.out.write('<link rel="shortcut icon" href="www/images/favico.ico">\n')
+    self.response.out.write('<link rel="shortcut icon" href="www/images/favicon.ico">\n')
     self.response.out.write('<script type="text/javascript" src="www/scripts/jquery-1.3.2.min.js"></script>\n')
     self.response.out.write('<script type="text/javascript" src="www/scripts/cal.js"></script>\n')
     self.response.out.write('''<script type="text/javascript">
             jQuery(document).ready(function ()
             {
 	      $('input.one').simpleDatepicker();
-            });
-          </script>\n''')
+            });\n''')
+    self.response.out.write('</script>\n')
     self.response.out.write('<link href="www/stylesheets/calendar.css" rel="stylesheet" type="text/css" />\n')
     self.response.out.write('<link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">\n')
     self.response.out.write('</head><body>\n')
@@ -74,14 +74,16 @@ class MainPage(webapp.RequestHandler):
 #                              cgi.escape(greeting.content))
 
 
+    self.response.out.write('<div id="container">\n')
     self.response.out.write('''
-          <div id="dl1" class="datelabel">Select a departure date:</div>
-          <div id="calp1"><input id="seldate1" class="one" type="text" name="date" value="" /></div>
-          <div id="chb1" class="datelabel">One way only: <input id="onewaycheck" class="checkbox" ></div>
-          <div id="dl2" class="datelabel">Select a return date (or choose one-way):</div>
-          <div id="calp2"><input class="one" type="text" name="date" value="" /></div>
-        </body>
-      </html>''')
+          <div id="dl1" class="datelabel">Select a departure date:</div> <!-- dl1 -->
+          <div id="calp1"><input id="seldate1" class="one" type="text" name="date" value="" /></div><!-- calp2 -->
+          <div id="dl2" class="datelabel">Select a return date (or choose one-way):</div><!-- dl2 -->
+          <div id="calp2"><input class="one" type="text" name="date" value="" /></div><!-- calp2 -->
+          <div id="chb1" class="datelabel">One way only: <input id="onewaycheck" class="checkbox" >
+          </div><!-- chb1 -->\n''')
+    self.response.out.write('</div><!-- container -->\n')
+    self.response.out.write('</body></html>')
 
 
 #class Flights(webapp.RequestHandler):
