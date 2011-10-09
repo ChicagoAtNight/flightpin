@@ -16,6 +16,10 @@ handlers:
 - url: www/stylesheets
   static_dir: stylesheets
 
+## scripts for static pages
+- url: www/scripts
+  static_dir: scripts
+
 ## Image exentensions
 - url: /(.*\.(gif|png|jpg))
   static_files: static/\1
