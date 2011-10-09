@@ -1,28 +1,28 @@
-application: skypin
+application: flightpin
 version: 1
 runtime: python
 api_version: 1
 
 handlers:
-- url: .*
-  script: skypin.py
-
 # begin static handlers
 ## Images for static pages
-- url: www/images
-  static_dir: images
+- url: /images
+  static_dir: www/images
 
 ## CSS for static pages
-- url: www/stylesheets
-  static_dir: stylesheets
+- url: /stylesheets
+  static_dir: www/stylesheets
 
 ## scripts for static pages
-- url: www/scripts
-  static_dir: scripts
+- url: /scripts
+  static_dir: www/scripts
+
+- url: .*
+  script: flightpin.py
 
 ## Image exentensions
-- url: /(.*\.(gif|png|jpg))
-  static_files: static/\1
-  upload: static/(.*\(gif|png|jpg))
+##- url: /(.*\.(gif|png|jpg))
+##  static_files: static/\1
+##  upload: static/(.*\(gif|png|jpg))
 
 
