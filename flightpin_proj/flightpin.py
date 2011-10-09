@@ -45,7 +45,7 @@ class MainPage(webapp.RequestHandler):
     self.response.out.write('<!DOCTYPE HTML>')
     self.response.out.write('<html><body>')
     self.response.out.write('<head>')
-    self.response.out.write('<title>SkyPin: Pin your destination, find your flight fast</title>')
+    self.response.out.write('<title>FlightPin: Pin your destination, find your flight fast</title>')
     self.response.out.write('<script type="text/javascript" src="scripts/jquery-1.3.2.min.js>')
     self.response.out.write('<script type="text/javascript" src="scripts/cal.js>')
     self.response.out.write('''<script type="text/javascript">

@@ -56,4 +56,8 @@ table {
 }
 
 /* font styling */
+body { font-family: font-family: 'Droid Sans', sans-serif; font-size: 14pt; text-align: center;
+       background-color: #fff;
+}
+
 .datelabel {font-family: font-family: 'Droid Sans', sans-serif; font-size: 14pt; text-align: center;}
