@@ -69,7 +69,8 @@ body { font-family: font-family: 'Droid Sans', sans-serif; font-size: 14pt; text
 
 /* Alignment and Layout*/
 .halves {width: 50%;}
-.one {text-align: right; left:0px; padding-top: 5px; padding-bottom: 5px;}
+.one {text-align: right; left:0px; margin-top: 10px; margin-bottom: 5px;}
 
 #container {width: 100%}
-#footer {right:10px; width: 100%}
+#footer {width: 100%}
+#logo {right:10px;}

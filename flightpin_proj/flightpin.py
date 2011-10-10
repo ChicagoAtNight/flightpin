@@ -85,7 +85,7 @@ class MainPage(webapp.RequestHandler):
           <div id="departdatediv" class="datelabel">Departure date: <br>
             <form>
               <input id="seldate1" class="one" type="text" name="date" value="Select" />
-              <input id="onewaycheck" type="checkbox" name="arrangement" selected="" onClick=toggleElementOnCheck(document.getElementById('returndatediv'),this) value="oneway" />
+              <input id="onewaycheck" type="checkbox" name="arrangement" selected="" onClick=toggleElementOnCheck('returndatediv',this,'returndate') value="oneway" />
               <span id="chb1" class="onewaylabel">(one way only)
               </span><!-- chb1 -->
             </form>
@@ -99,7 +99,9 @@ class MainPage(webapp.RequestHandler):
     self.response.out.write('</div><!-- rhs -->\n')
     self.response.out.write('''
           <div id="footer" style="float:none">
-            <img src="www/images/logo.png" alt="FlightPin">
+            <div id="logo">
+              <img src="www/images/logo.png" alt="FlightPin">
+            </div><!-- logo -->
           </div><!-- footer -->\n''')
     self.response.out.write('</div><!-- container -->\n')
     self.response.out.write('</body></html>')
