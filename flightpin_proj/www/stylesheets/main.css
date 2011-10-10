@@ -72,11 +72,14 @@ body { font-family: font-family: 'Droid Sans', sans-serif; font-size: 14pt;
 .onewaylabel {font-family: font-family: 'Droid Sans', sans-serif; font-size: 10pt; text-align: left;}
 
 /* Alignment and Layout*/
-.halves {width: 600px; height:400px;}
+.halves {height:400px;}
 .one {text-align: right; left:0px; margin-top: 10px; margin-bottom: 5px;}
+
+#lhs {overflow: auto; width: 60%;}
+#rhs {overflow: auto; right: 0px; width: 40%;}
 
 #mycontainer {width: 100%;}
 #footer {width: 100%;clear: both;}
 #pins {margin-top: 20px; position:absolute;}
-#logo { margin-top: 20px; position:absolute;}
-#map_canvas {width: 600px; height: 400px; left:50px;}
+#logo { margin-top: 20px;}
+#map_canvas {width: 550px; height: 400px; left:50px;}

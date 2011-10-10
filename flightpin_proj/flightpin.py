@@ -63,15 +63,29 @@ class MainPage(webapp.RequestHandler):
 </script>\n''')
     self.response.out.write('''
 <script type="text/javascript">
+  var map;
+  var kmlLayer = null;
   function initialize() {
-    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var lincoln_NB = new google.maps.LatLng(40.818007, -96.767641);
     var myOptions = {
-      zoom: 8,
-      center: latlng,
+      zoom: 4,
+      center: lincoln_NB,
+      disableDefaultUI: true,
+      zoomControl: true,
+      zoomControlOptions: {
+        style: google.maps.ZoomControlStyle.SMALL
+      },
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    var map = new google.maps.Map(document.getElementById("map_canvas"),
-        myOptions);
+      map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+      kmlLayer = new google.maps.KmlLayer(http://cw.sampas.net/kml/ALL_US_airports_20090827-20091022.kml, { map: map });
+      currentLayer = kmlLayer;
+  }
+
+  function clearLayer() {
+    if (currentLayer != null) {
+      currentLayer.setMap(null);
+    }
   }
 
 </script>
@@ -95,11 +109,11 @@ class MainPage(webapp.RequestHandler):
 
 
     self.response.out.write('<div id="mycontainer">\n')
-    self.response.out.write('  <div id="lhs" class="halves" style="float:left">\n')
+    self.response.out.write('  <div id="lhs" class="halves" style="float:left;">\n')
     self.response.out.write('   <div id="map_canvas">\n')
     self.response.out.write('   </div><!-- map_canvas -->\n')
     self.response.out.write('  </div><!-- lhs -->\n')
-    self.response.out.write('  <div id="rhs" class="halves" style="float: right">\n')
+    self.response.out.write('  <div id="rhs" class="halves" style="float: right;">\n')
     self.response.out.write('''
           <div id="departdatediv" class="datelabel">Departure date: <br>
             <form>

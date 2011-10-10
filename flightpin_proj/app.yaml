@@ -17,6 +17,10 @@ handlers:
 - url: /www/scripts
   static_dir: www/scripts
 
+## scripts for data
+- url: /www/data
+  static_dir: www/data
+
 - url: .*
   script: flightpin.py
 
