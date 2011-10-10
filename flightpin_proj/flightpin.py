@@ -51,6 +51,7 @@ class MainPage(webapp.RequestHandler):
     self.response.out.write('<link rel="shortcut icon" href="www/images/favicon.ico">\n')
     self.response.out.write('<script type="text/javascript" src="www/scripts/jquery-1.3.2.min.js"></script>\n')
     self.response.out.write('<script type="text/javascript" src="www/scripts/cal.js"></script>\n')
+    self.response.out.write('<script type="text/javascript" src="www/scripts/airports.js"></script>\n')
     self.response.out.write('<script type="text/javascript" src="www/scripts/main.js"></script>\n')
     self.response.out.write('''<script type="text/javascript">
             jQuery(document).ready(function ()
@@ -65,6 +66,7 @@ class MainPage(webapp.RequestHandler):
 <script type="text/javascript">
   var map;
   var kmlLayer = null;
+  var currentLayer = null;
   function initialize() {
     var lincoln_NB = new google.maps.LatLng(40.818007, -96.767641);
     var myOptions = {
@@ -72,22 +74,16 @@ class MainPage(webapp.RequestHandler):
       center: lincoln_NB,
       disableDefaultUI: true,
       zoomControl: true,
+      disableDoubleClickZoom: true,
       zoomControlOptions: {
         style: google.maps.ZoomControlStyle.SMALL
       },
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
       map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
-      kmlLayer = new google.maps.KmlLayer(http://cw.sampas.net/kml/ALL_US_airports_20090827-20091022.kml, { map: map });
-      currentLayer = kmlLayer;
+      setMarkers(map, CAN_airports);
+      setMarkers(map, US_airports);
   }
-
-  function clearLayer() {
-    if (currentLayer != null) {
-      currentLayer.setMap(null);
-    }
-  }
-
 </script>
 \n''')
     self.response.out.write('<link href="www/stylesheets/calendar.css" rel="stylesheet" type="text/css" />\n')
@@ -128,6 +124,8 @@ class MainPage(webapp.RequestHandler):
                 <input id="returndate" class="one" type="text" name="date" value="Select" />
               </form>
           </div><!-- returndatediv -->
+          <div id="button"> <button id="reset" type="button" onclick=initialize()>Reset Map</button>')
+          </div> <!-- button -->
           <div id="logo">
             <img src="www/images/logo.png" alt="FlightPin Logo">
           </div><!-- logo -->
@@ -137,7 +135,7 @@ class MainPage(webapp.RequestHandler):
           <div id="footer">
             <div id="pins">
               <img src="www/images/pin_trailers.png" alt="flight pins">
-            </div><!-- logo -->
+           </div><!-- logo -->
           </div><!-- footer -->\n''')
     self.response.out.write('</div><!-- mycontainer -->\n')
     self.response.out.write('</body></html>')

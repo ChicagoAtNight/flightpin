@@ -74,6 +74,9 @@ body { font-family: font-family: 'Droid Sans', sans-serif; font-size: 14pt;
 /* Alignment and Layout*/
 .halves {height:400px;}
 .one {text-align: right; left:0px; margin-top: 10px; margin-bottom: 5px;}
+.infobubble {font-size: 10pt; font-color: #000;}
+.infobox {font-size: 10pt; font-color: #000;}
+
 
 #lhs {overflow: auto; width: 60%;}
 #rhs {overflow: auto; right: 0px; width: 40%;}
