@@ -124,7 +124,7 @@ class MainPage(webapp.RequestHandler):
                 <input id="returndate" class="one" type="text" name="date" value="Select" />
               </form>
           </div><!-- returndatediv -->
-          <div id="button"> <button id="reset" type="button" onclick=initialize()>Reset Map</button>')
+          <div id="button"> <button id="reset" type="button" onclick=initialize()>Reset Map</button>
           </div> <!-- button -->
           <div id="logo">
             <img src="www/images/logo.png" alt="FlightPin Logo">
