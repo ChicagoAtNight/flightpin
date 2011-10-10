@@ -59,7 +59,7 @@ class MainPage(webapp.RequestHandler):
             });\n''')
     self.response.out.write('</script>\n')
 
-    self.response.out.write('''<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false">
+    self.response.out.write('''<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true">
 </script>\n''')
     self.response.out.write('''
 <script type="text/javascript">
@@ -79,7 +79,7 @@ class MainPage(webapp.RequestHandler):
     self.response.out.write('<link href="www/stylesheets/calendar.css" rel="stylesheet" type="text/css" />\n')
     self.response.out.write('<link href="www/stylesheets/main.css" rel="stylesheet" type="text/css" />\n')
     self.response.out.write('<link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">\n')
-    self.response.out.write('</head><body onload="initialize()>\n')
+    self.response.out.write('</head><body onload="initialize()">\n')
 
     #greetings = db.GqlQuery("SELECT * "
      #                       "FROM Flight "
@@ -95,18 +95,17 @@ class MainPage(webapp.RequestHandler):
 
 
     self.response.out.write('<div id="mycontainer">\n')
-    self.response.out.write('<div id="lhs" class="halves">\n')
-    self.response.out.write(' <div id="map_canvas">\n')
-    self.response.out.write('</div><!-- map_canvas -->\n')
-    self.response.out.write('Google map\n')
-    self.response.out.write('</div><!-- lhs -->\n')
+    self.response.out.write('  <div id="lhs" class="halves" style="float:left">\n')
+    self.response.out.write('   <div id="map_canvas">\n')
+    self.response.out.write('   </div><!-- map_canvas -->\n')
+    self.response.out.write('  </div><!-- lhs -->\n')
     self.response.out.write('  <div id="rhs" class="halves" style="float: right">\n')
     self.response.out.write('''
           <div id="departdatediv" class="datelabel">Departure date: <br>
             <form>
               <input id="seldate1" class="one" type="text" name="date" value="Select" />
               <input id="onewaycheck" type="checkbox" name="arrangement" selected="" onClick=toggleElementOnCheck('returndatediv',this,'returndate') value="oneway" />
-              <span id="chb1" class="onewaylabel">(one way only)
+              <span id="chb1" class="onewaylabel">(one way flight)
               </span><!-- chb1 -->
             </form>
           </div> <!-- departdatediv -->
@@ -115,12 +114,15 @@ class MainPage(webapp.RequestHandler):
                 <input id="returndate" class="one" type="text" name="date" value="Select" />
               </form>
           </div><!-- returndatediv -->
+          <div id="logo">
+            <img src="www/images/logo.png" alt="FlightPin Logo">
+          </div><!-- logo -->
 \n''')
     self.response.out.write('</div><!-- rhs -->\n')
     self.response.out.write('''
-          <div id="footer" style="float:none">
-            <div id="logo">
-              <img src="www/images/logo.png" alt="FlightPin">
+          <div id="footer">
+            <div id="pins">
+              <img src="www/images/pin_trailers.png" alt="flight pins">
             </div><!-- logo -->
           </div><!-- footer -->\n''')
     self.response.out.write('</div><!-- mycontainer -->\n')
