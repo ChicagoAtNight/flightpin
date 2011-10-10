@@ -43,7 +43,7 @@ from google.appengine.ext import webapp
 class MainPage(webapp.RequestHandler):
   def get(self):
     self.response.out.write('''
-    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />''')
     self.response.out.write('<html xmlns="http://www.w3.org/1999/xhtml">\n')
     self.response.out.write('<head>')
@@ -58,10 +58,28 @@ class MainPage(webapp.RequestHandler):
 	      $('input.one').simpleDatepicker();
             });\n''')
     self.response.out.write('</script>\n')
+
+    self.response.out.write('''<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false">
+</script>\n''')
+    self.response.out.write('''
+<script type="text/javascript">
+  function initialize() {
+    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var myOptions = {
+      zoom: 8,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map_canvas"),
+        myOptions);
+  }
+
+</script>
+\n''')
     self.response.out.write('<link href="www/stylesheets/calendar.css" rel="stylesheet" type="text/css" />\n')
     self.response.out.write('<link href="www/stylesheets/main.css" rel="stylesheet" type="text/css" />\n')
     self.response.out.write('<link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">\n')
-    self.response.out.write('</head><body>\n')
+    self.response.out.write('</head><body onload="initialize()>\n')
 
     #greetings = db.GqlQuery("SELECT * "
      #                       "FROM Flight "
@@ -76,8 +94,10 @@ class MainPage(webapp.RequestHandler):
 #                              cgi.escape(greeting.content))
 
 
-    self.response.out.write('<div id="container">\n')
+    self.response.out.write('<div id="mycontainer">\n')
     self.response.out.write('<div id="lhs" class="halves">\n')
+    self.response.out.write(' <div id="map_canvas">\n')
+    self.response.out.write('</div><!-- map_canvas -->\n')
     self.response.out.write('Google map\n')
     self.response.out.write('</div><!-- lhs -->\n')
     self.response.out.write('  <div id="rhs" class="halves" style="float: right">\n')
@@ -103,7 +123,7 @@ class MainPage(webapp.RequestHandler):
               <img src="www/images/logo.png" alt="FlightPin">
             </div><!-- logo -->
           </div><!-- footer -->\n''')
-    self.response.out.write('</div><!-- container -->\n')
+    self.response.out.write('</div><!-- mycontainer -->\n')
     self.response.out.write('</body></html>')
 
 
