@@ -11,5 +11,5 @@
 
 .datepicker tbody td { width: 24px; height: 24px; border: 1px solid #ccc; font: 11px/22px Arial, Helvetica, sans-serif; text-align: center; background: #fff; }
 .datepicker tbody td.date { cursor: pointer; }
-.datepicker tbody td.date.over { background-color: #99ffff; }
-.datepicker tbody td.date.chosen { font-weight: bold; background-color: #ccffcc; }
+.datepicker tbody td.date.over { background-color: #BEDB2A; }
+.datepicker tbody td.date.chosen { font-weight: bold; background-color: #2A68DD; }

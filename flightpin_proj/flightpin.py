@@ -51,6 +51,7 @@ class MainPage(webapp.RequestHandler):
     self.response.out.write('<link rel="shortcut icon" href="www/images/favicon.ico">\n')
     self.response.out.write('<script type="text/javascript" src="www/scripts/jquery-1.3.2.min.js"></script>\n')
     self.response.out.write('<script type="text/javascript" src="www/scripts/cal.js"></script>\n')
+    self.response.out.write('<script type="text/javascript" src="www/scripts/main.js"></script>\n')
     self.response.out.write('''<script type="text/javascript">
             jQuery(document).ready(function ()
             {
@@ -58,6 +59,7 @@ class MainPage(webapp.RequestHandler):
             });\n''')
     self.response.out.write('</script>\n')
     self.response.out.write('<link href="www/stylesheets/calendar.css" rel="stylesheet" type="text/css" />\n')
+    self.response.out.write('<link href="www/stylesheets/main.css" rel="stylesheet" type="text/css" />\n')
     self.response.out.write('<link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">\n')
     self.response.out.write('</head><body>\n')
 
@@ -75,13 +77,30 @@ class MainPage(webapp.RequestHandler):
 
 
     self.response.out.write('<div id="container">\n')
+    self.response.out.write('<div id="lhs" class="halves">\n')
+    self.response.out.write('Google map\n')
+    self.response.out.write('</div><!-- lhs -->\n')
+    self.response.out.write('  <div id="rhs" class="halves" style="float: right">\n')
     self.response.out.write('''
-          <div id="dl1" class="datelabel">Select a departure date:</div> <!-- dl1 -->
-          <div id="calp1"><input id="seldate1" class="one" type="text" name="date" value="" /></div><!-- calp2 -->
-          <div id="dl2" class="datelabel">Select a return date (or choose one-way):</div><!-- dl2 -->
-          <div id="calp2"><input class="one" type="text" name="date" value="" /></div><!-- calp2 -->
-          <div id="chb1" class="datelabel">One way only: <input id="onewaycheck" class="checkbox" >
-          </div><!-- chb1 -->\n''')
+          <div id="departdatediv" class="datelabel">Departure date: <br>
+            <form>
+              <input id="seldate1" class="one" type="text" name="date" value="Select" />
+              <input id="onewaycheck" type="checkbox" name="arrangement" selected="" onClick=toggleElementOnCheck(document.getElementById('returndatediv'),this) value="oneway" />
+              <span id="chb1" class="onewaylabel">(one way only)
+              </span><!-- chb1 -->
+            </form>
+          </div> <!-- departdatediv -->
+          <div id="returndatediv" class="datelabel">Return date (or choose one-way):
+              <br><form>
+                <input id="returndate" class="one" type="text" name="date" value="Select" />
+              </form>
+          </div><!-- returndatediv -->
+\n''')
+    self.response.out.write('</div><!-- rhs -->\n')
+    self.response.out.write('''
+          <div id="footer" style="float:none">
+            <img src="www/images/logo.png" alt="FlightPin">
+          </div><!-- footer -->\n''')
     self.response.out.write('</div><!-- container -->\n')
     self.response.out.write('</body></html>')
 
